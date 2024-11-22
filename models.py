@@ -7,30 +7,31 @@ from sqlalchemy import text
 db = SQLAlchemy()
 
 class User(UserMixin, db.Model):
-    _tablename_ = 'users'
+    __tablename__ = 'users'
     user_id = db.mapped_column(db.Integer, primary_key=True)
     username = db.mapped_column(db.String(50), unique=True)
     is_chef = db.mapped_column(db.Boolean, default=False)
 
 class Recipe(db.Model):
-    _tablename_ = 'recipes'
+    __tablename__ = 'recipes'
     recipe_id = db.mapped_column(db.Integer, primary_key=True)
     recipe_name = db.mapped_column(db.String(500))
     ingredients = db.mapped_column(db.String(1000))
     method = db.mapped_column(db.String(5000))
     total_time = db.mapped_column(db.Integer)
-    date_added = db.mapped_column(db.DateTime, default=datetime.timezone.utc)
+    date_added = db.mapped_column(db.DateTime, default=datetime.utcnow)
     chef_id = db.mapped_column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
-    cuisine_id = db.mapped_column(db.Integer, db.ForeignKey('cuisines.cusine_id'), nullable=False)
+    cuisine_id = db.mapped_column(db.Integer, db.ForeignKey('cuisines.cuisine_id'), nullable=False)
 
 
 class Favorite(db.Model):
-    _tablename_ = 'favorites'
+    __tablename__ = 'favorites'
     favorite_id = db.mapped_column(db.Integer, primary_key=True)
     user_id = db.mapped_column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
     recipe_id = db.mapped_column(db.Integer, db.ForeignKey('recipes.recipe_id'), nullable=False)
 
+
 class Cuisine(db.Model):
-    _tablename_ = 'cuisines'
+    __tablename__ = 'cuisines'
     cuisine_id = db.mapped_column(db.Integer, primary_key=True)
     cuisine_name = db.mapped_column(db.String(50))
