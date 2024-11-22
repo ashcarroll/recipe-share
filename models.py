@@ -20,13 +20,15 @@ class Recipe(db.Model):
     method = db.mapped_column(db.String(5000))
     total_time = db.mapped_column(db.Integer)
     date_added = db.mapped_column(db.DateTime, default=datetime.timezone.utc)
+    chef_id = db.mapped_column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+    cuisine_id = db.mapped_column(db.Integer, db.ForeignKey('cuisines.cusine_id'), nullable=False)
 
 
 class Favorite(db.Model):
     _tablename_ = 'favorites'
     favorite_id = db.mapped_column(db.Integer, primary_key=True)
-    user_id = ...
-    recipe_id = ...
+    user_id = db.mapped_column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+    recipe_id = db.mapped_column(db.Integer, db.ForeignKey('recipes.recipe_id'), nullable=False)
 
 class Cuisine(db.Model):
     _tablename_ = 'cuisines'
