@@ -19,6 +19,7 @@ class Recipe(db.Model):
     ingredients = db.mapped_column(db.String(1000))
     method = db.mapped_column(db.String(5000))
     total_time = db.mapped_column(db.Integer)
+    date_added = db.mapped_column(db.DateTime, default=datetime.timezone.utc)
 
 
 class Favorite(db.Model):
@@ -30,4 +31,4 @@ class Favorite(db.Model):
 class Cuisine(db.Model):
     _tablename_ = 'cuisines'
     cuisine_id = db.mapped_column(db.Integer, primary_key=True)
-    cuisine_name = ...
+    cuisine_name = db.mapped_column(db.String(50))
