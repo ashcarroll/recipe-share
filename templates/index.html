@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2>Welcome to RecipeShare</h2>
+    <h2>Welcome to RecipeShare. Browse through our cuisines to find some recipes you like!</h2>
+    <ul>
+        {% for cuisine in cuisines %}
+        <li>{{ cuisine.cuisine_name }}</li>
+        {% endfor %}
+    </ul>
 {% endblock %}
