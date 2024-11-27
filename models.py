@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 
 from flask_login import UserMixin
 from flask_sqlalchemy import SQLAlchemy
@@ -25,7 +25,7 @@ class Recipe(db.Model):
     ingredients = db.mapped_column(db.String(1000))
     method = db.mapped_column(db.String(5000))
     total_time = db.mapped_column(db.Integer)
-    date_added = db.mapped_column(db.DateTime, default=datetime.utcnow)
+    date_added = db.mapped_column(db.DateTime, default=datetime.now(timezone.utc))
     chef_id = db.mapped_column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
     cuisine_id = db.mapped_column(db.Integer, db.ForeignKey('cuisines.cuisine_id'), nullable=False)
 
