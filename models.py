@@ -15,6 +15,9 @@ class User(UserMixin, db.Model):
     recipes = db.relationship('Recipe', back_populates='chef')
     favorites = db.relationship('Favorite', back_populates='user')
 
+    def __repr__(self):
+        return f'User <username: {self.username}, is_chef: {self.is_chef}>'
+
 class Recipe(db.Model):
     __tablename__ = 'recipes'
     recipe_id = db.mapped_column(db.Integer, primary_key=True)
@@ -30,6 +33,9 @@ class Recipe(db.Model):
     cuisine = db.relationship('Cuisine', back_populates='recipes')
     favorites = db.relationship('Favorite', back_populates='recipe')
 
+    def __repr__(self):
+        return f'Recipe <recipe name:{self.recipe_name}, added by:{self.chef}>'
+
 
 class Favorite(db.Model):
     __tablename__ = 'favorites'
@@ -40,6 +46,9 @@ class Favorite(db.Model):
     user = db.relationship('User', back_populates='favorites')
     recipe = db.relationship('Recipe', back_populates='favorites')
 
+    def __repr__(self):
+        return f'Recipe <recipe:{self.recipe}, user:{self.user}>'
+
 
 class Cuisine(db.Model):
     __tablename__ = 'cuisines'
@@ -47,3 +56,6 @@ class Cuisine(db.Model):
     cuisine_name = db.mapped_column(db.String(50))
 
     recipes = db.relationship('Recipe', back_populates='cuisine')
+
+    def __repr__(self):
+        return f'Cuisine <cuisine name:{self.cuisine_name}>'
