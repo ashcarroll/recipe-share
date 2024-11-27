@@ -6,6 +6,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-
+        <header>
+            <h1>RecipeShare</h1>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="{{ url_for('index') }}" class="active">Home</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            {% block content %}{% endblock %}
+        </main>
     </body>
 </html>
