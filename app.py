@@ -21,7 +21,12 @@ def load_user(user_id):
 
 @app.route('/')
 def index():
-    return render_template('index.html', cuisines=Cuisine.query.all())
+    return render_template('index.html', cuisines = Cuisine.query.all())
+
+@app.route('/cuisine/<int:cuisine_id>')
+def cuisine_category(cuisine_id):
+    cuisine = Cuisine.query.get_or_404(cuisine_id)
+    return render_template('cuisine.html', cuisine=cuisine)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -3,7 +3,7 @@
     <h2>Welcome to RecipeShare. Browse through our cuisines to find some recipes you like!</h2>
     <ul>
         {% for cuisine in cuisines %}
-        <li>{{ cuisine.cuisine_name }}</li>
+        <li><a href="{{ url_for('cuisine_category', cuisine_id=cuisine.cuisine_id)}}">{{ cuisine.cuisine_name }}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}

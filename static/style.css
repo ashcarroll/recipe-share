@@ -11,7 +11,7 @@ h1 {
 }
 
 
-/* Header Style */
+/* Header Styling */
 
 header {
     background-color: #86d376;
@@ -21,13 +21,14 @@ header {
 }
 
 
-/* Nav Bar */
+/* NavBar Styling */
 
 nav {
     background-color: #86d376;
     overflow: hidden;
 }
 
-.navbar ul {
+.navigation ul {
     list-style: none;
 }
+
