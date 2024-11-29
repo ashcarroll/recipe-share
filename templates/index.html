@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
     <h2>Welcome to RecipeShare. Browse through our cuisines to find some recipes you like!</h2>
-    <ul>
+    <ul class="card-list">
         {% for cuisine in cuisines %}
         <li><a href="{{ url_for('cuisine_category', cuisine_id=cuisine.cuisine_id)}}">{{ cuisine.cuisine_name }}</a></li>
         {% endfor %}

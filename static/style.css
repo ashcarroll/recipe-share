@@ -1,9 +1,15 @@
 /* Global Styling */
 
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
+    /* font-family: Arial, sans-serif; */
     padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0px;
 }
 
 h1 {
@@ -32,3 +38,55 @@ nav {
     list-style: none;
 }
 
+
+/* Card List Styles */
+ul.card-list {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+}
+
+ul.card-list li {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin: 10px;
+    padding: 20px;
+    flex: 1 1 calc(25% - 20px); /* Adjust the percentage to control the number of cards per row */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+ul.card-list li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+table th, table td {
+    padding: 15px;
+    text-align: left;
+}
+
+table thead {
+    background-color: #eaeaea;
+}
+
+table tr {
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.2s;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
