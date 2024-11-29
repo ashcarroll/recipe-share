@@ -75,6 +75,21 @@ def logout_page():
 def logout_action():
     return redirect(url_for('index'))
 
+@app.route('/login', methods=['GET'])
+def login_page():
+    return render_template('login.html')
+
+@app.route('/login', methods=['POST'])
+def login_action():
+    username = request.form['username']
+    user = User.query.filter_by(username=username).first()
+    if not user:
+        flash(f"This is not an existing username for this site")
+        return redirect(url_for('login_page'))
+    
+    login_user(user)
+    flash(f"Hello {username}!")
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)
