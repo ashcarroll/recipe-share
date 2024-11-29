@@ -59,7 +59,7 @@ def register_action():
     db.session.commit()
 
     login_user(user)
-    return redirect(url_for('index.html'))
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)

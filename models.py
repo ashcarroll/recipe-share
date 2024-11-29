@@ -17,6 +17,10 @@ class User(UserMixin, db.Model):
 
     def __repr__(self):
         return f'User <username: {self.username}, is_chef: {self.is_chef}>'
+    
+    def get_id(self):
+        return str(self.user_id)
+
 
 class Recipe(db.Model):
     __tablename__ = 'recipes'
