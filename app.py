@@ -65,5 +65,16 @@ def register_action():
     login_user(user)
     return redirect(url_for('index'))
 
+@app.route('/logout', methods=['GET'])
+@login_required
+def logout_page():
+    return render_template('logout.html')
+
+@app.route('/logout', methods=['POST'])
+@login_required
+def logout_action():
+    return redirect(url_for('index'))
+
+
 if __name__ == '__main__':
     app.run(debug=True)
