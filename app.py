@@ -45,5 +45,21 @@ def add_recipe():
     
     return render_template('add_recipe.html')
 
+@app.route('/register', methods=['GET'])
+def register_page():
+    return render_template('register.html')
+
+@app.route('/register', methods=['POST'])
+def register_action():
+    username = request.form['username']
+    is_chef = request.form.get('is_chef').lower() == 'on'
+    user = User(username=username, is_chef=is_chef)
+
+    db.session.add(user)
+    db.session.commit()
+
+    login_user(user)
+    return redirect(url_for('index.html'))
+
 if __name__ == '__main__':
     app.run(debug=True)

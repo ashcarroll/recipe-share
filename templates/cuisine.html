@@ -1,28 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Recipes from {{cuisine.cuisine_name}} cuisine:</h2>
-<table>
-    <thead>
-        <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Cooking Time</th>
-            <th scope="col">Chef</th>
-            <th scope="col">Date added</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for recipe in cuisine.recipes %}
-        <tr>
-            <td>{{recipe.recipe_name}}</td>
-            <td>{{recipe.total_time}}</td>
-            <td>{{recipe.chef.username}}</td>
-            <td>{{recipe.date_added}}</td>
-        </tr>
-        {% else %}
-        <tr>
-            <td colspan="4">No recipes found in the {{cuisine.cuisine_name}} section</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+    <h2>Recipes from {{cuisine.cuisine_name}} cuisine:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Cooking Time</th>
+                <th scope="col">Chef</th>
+                <th scope="col">Date added</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for recipe in cuisine.recipes %}
+            <tr>
+                <td>{{recipe.recipe_name}}</td>
+                <td>{{recipe.total_time}}</td>
+                <td>{{recipe.chef.username}}</td>
+                <td>{{recipe.date_added}}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4">No recipes found in the {{cuisine.cuisine_name}} section</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

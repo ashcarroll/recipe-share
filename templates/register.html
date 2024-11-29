@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <!-- [html-validate-disable attribute-allowed-values] -->
+    <form action="{{ url_for('register_action') }}" method="POST">
+        <label>Username
+            <input type="text" name="username" placeholder="username" required>
+        </label>
+        <label>Are you a chef?
+            <input type="checkbox" name="is_chef">
+        </label>
+        <button type="submit">Register</button>
+    </form>
+{% endblock %}
