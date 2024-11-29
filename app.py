@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 
 from models import User, Recipe, Favorite, Cuisine, db
@@ -27,6 +27,23 @@ def index():
 def cuisine_category(cuisine_id):
     cuisine = Cuisine.query.get_or_404(cuisine_id)
     return render_template('cuisine.html', cuisine=cuisine)
+
+@app.route('/recipes')
+def recipe_list():
+    return render_template('recipe_list.html', recipes = Recipe.query.all())
+
+@app.route('/add_recipe', methods=['GET', 'POST'])
+def add_recipe():
+    if request.method == 'POST':
+        recipe_name = request.form['recipe_name']
+        ingredients = request.form['ingredients']
+        method = request.form['method']
+        time = request.form['time']
+        db.session.add(Recipe(recipe_name=recipe_name, ingredients=ingredients, method=method, total_time=time))
+        db.session.commit()
+        return redirect(recipe_list.html)
+    
+    return render_template('add_recipe.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

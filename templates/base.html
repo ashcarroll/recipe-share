@@ -11,7 +11,9 @@
             <h1>RecipeShare</h1>
             <nav class="navigation">
                 <ul>
-                    <li><a href="{{ url_for('index') }}" class="active">Home</a></li>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('recipe_list') }}">Recipes</a></li>
+                    <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
                 </ul>
             </nav>
         </header>
