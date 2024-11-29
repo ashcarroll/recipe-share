@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 
 from models import User, Recipe, Favorite, Cuisine, db
@@ -52,6 +52,10 @@ def register_page():
 @app.route('/register', methods=['POST'])
 def register_action():
     username = request.form['username']
+    if User.query.filter_by(username=username).first():
+        flash(f"This username '{username}' is already taken, try another one")
+        return redirect(url_for('register_page'))
+    
     is_chef = request.form.get('is_chef').lower() == 'on'
     user = User(username=username, is_chef=is_chef)
 
