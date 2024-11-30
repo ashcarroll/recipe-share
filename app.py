@@ -21,7 +21,10 @@ def load_user(user_id):
 
 @app.route('/')
 def index():
-    return render_template('index.html', cuisines = Cuisine.query.all())
+    recipes = Recipe.query.all()
+    cuisines = Cuisine.query.all()
+    recipe_urls = [url_for('recipe', recipe_id=recipe.recipe_id) for recipe in recipes]
+    return render_template('index.html', recipes=recipes, cuisines=cuisines, recipe_urls=recipe_urls)
 
 @app.route('/cuisine/<int:cuisine_id>')
 def cuisine_category(cuisine_id):

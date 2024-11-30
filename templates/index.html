@@ -6,4 +6,14 @@
         <li><a href="{{ url_for('cuisine_category', cuisine_id=cuisine.cuisine_id)}}">{{ cuisine.cuisine_name }}</a></li>
         {% endfor %}
     </ul>
+    <button id="random-recipe" type="button">Surprise Me!</button>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript">
+        var recipeUrls = {{ recipe_urls | tojson }};
+        console.log('recipeUrls:', recipeUrls); // For debugging
+    </script>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 {% endblock %}

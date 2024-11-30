@@ -85,7 +85,20 @@ ul.card-list li:hover {
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-/* Table Styles */
+ul.card-list li a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Main Styling */
+
+main {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* Table Styling */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -112,6 +125,11 @@ table tr {
 
 table tr:hover {
     background-color: #f1f1f1;
+}
+
+table a {
+    text-decoration: none;
+    color: inherit;
 }
 
 /* Form Styles */

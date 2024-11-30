@@ -13,7 +13,11 @@
         <tbody>
             {% for recipe in cuisine.recipes %}
             <tr>
-                <td>{{recipe.recipe_name}}</td>
+                <td>
+                    <a href="{{ url_for('recipe', recipe_id=recipe.recipe_id) }}">
+                        {{recipe.recipe_name}}
+                    </a>
+                </td>
                 <td>{{recipe.total_time}}</td>
                 <td>{{recipe.chef.username}}</td>
                 <td>{{recipe.date_added}}</td>

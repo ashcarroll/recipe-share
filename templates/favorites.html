@@ -3,7 +3,7 @@
 
 <h1>Your favorite recipes</h1>
 
-<ul>
+<ul class="card-list">
     {% for recipe in recipes %}
         <li>
             <a href="{{ url_for('recipe', recipe_id=recipe.recipe_id)}}">{{ recipe.recipe_name }}</a>

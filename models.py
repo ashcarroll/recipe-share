@@ -50,6 +50,9 @@ class Favorite(db.Model):
     user = db.relationship('User', back_populates='favorites')
     recipe = db.relationship('Recipe', back_populates='favorites')
 
+    # Adding a unique constraint for adding favorites
+    __table_args__ = (db.UniqueConstraint('user_id', 'recipe_id', name='_user_recipe_uc'),)
+
     def __repr__(self):
         return f'Recipe <recipe:{self.recipe}, user:{self.user}>'
 
