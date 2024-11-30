@@ -11,10 +11,10 @@ body {
     margin: 0px;
 }
 
-h1 {
-    margin: 20px;
+h1, h2, h3, h4, h5, h6, p {
+    margin: 20px 0;
+    color: #333;
 }
-
 
 /* Header Styling */
 
@@ -30,11 +30,34 @@ header {
 
 nav {
     background-color: #86d376;
-    overflow: hidden;
 }
 
 .navigation ul {
     list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+nav.navigation ul li {
+    margin: 0 15px;
+}
+
+nav.navigation ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    padding: 10px 15px;
+    display: block;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav.navigation ul li a:hover {
+    background-color: #fff;
+    color: #86d376;
+    border-radius: 5px;
 }
 
 
@@ -44,6 +67,7 @@ ul.card-list {
     display: flex;
     flex-wrap: wrap;
     margin: 10px;
+    padding: 0;
 }
 
 ul.card-list li {
@@ -88,4 +112,61 @@ table tr {
 
 table tr:hover {
     background-color: #f1f1f1;
+}
+
+/* Form Styles */
+
+form {
+    background-color: #fff;
+    padding: 30px;
+    margin: 20px auto;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form textarea,
+form select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form input[type="submit"],
+form button {
+    background-color: #86d376;
+    color: #333;
+    border: none;
+    padding: 15px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+form input[type="submit"]:hover,
+form button:hover {
+    background-color: #75bf69;
+}
+
+form .form-group {
+    margin-bottom: 20px;
 }
