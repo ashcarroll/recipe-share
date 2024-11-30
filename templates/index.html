@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block scripts %}
-    <script type="text/javascript">
+    <script>
         var recipeUrls = {{ recipe_urls | tojson }};
         console.log('recipeUrls:', recipeUrls); // For debugging
     </script>
