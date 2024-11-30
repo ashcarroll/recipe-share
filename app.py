@@ -73,6 +73,8 @@ def logout_page():
 @app.route('/logout', methods=['POST'])
 @login_required
 def logout_action():
+    logout_user()
+    flash("See you next time!")
     return redirect(url_for('index'))
 
 @app.route('/login', methods=['GET'])
