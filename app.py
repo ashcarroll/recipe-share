@@ -30,7 +30,12 @@ def cuisine_category(cuisine_id):
 
 @app.route('/recipes')
 def recipe_list():
-    return render_template('recipe_list.html', recipes = Recipe.query.all())
+    return render_template('recipe_list.html', recipes = Recipe.query.all())#
+
+@app.route('/recipe/<int:recipe_id>')
+def recipe(recipe_id):
+    recipe = Recipe.query.get_or_404(recipe_id)
+    return render_template('recipe.html', recipe=recipe)
 
 @app.route('/add_recipe', methods=['GET', 'POST'])
 def add_recipe():

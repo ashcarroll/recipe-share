@@ -4,7 +4,9 @@
     <ul class="card-list">
         {% for recipe in recipes %}
         <li>
-            {{recipe.recipe_name}}
+            <!-- {{recipe.recipe_name}} -->
+
+            <a href="{{ url_for('recipe', recipe_id=recipe.recipe_id) }}">{{ recipe.recipe_name }}</a>
         </li>
         {% endfor %}
     </ul>
