@@ -40,7 +40,11 @@ def recipe(recipe_id):
     recipe = Recipe.query.get_or_404(recipe_id)
 
     ingredients_list = [ingredient.strip() for ingredient in recipe.ingredients.split('/') if ingredient.strip()]
-    return render_template('recipe.html', recipe=recipe, ingredients=ingredients_list)
+
+    # Split method into list based on newline
+    method_steps = [step.strip() for step in recipe.method.split('\n') if step.strip()]
+
+    return render_template('recipe.html', recipe=recipe, ingredients=ingredients_list, method_steps=method_steps)
 
 @app.route('/add_recipe', methods=['GET', 'POST'])
 def add_recipe():
@@ -53,12 +57,16 @@ def add_recipe():
         # Join ingredients into a single string for database using '/'
         ingredients_str = '/'.join(ingredient.strip() for ingredient in ingredients if ingredient.strip())
 
+        # Get method steps from the form
+        method_steps = [step.strip() for step in request.form['method'].split('\n') if step.strip()]
+        method_str = '\n'.join(method_steps)
+
         # Create new recipe instance
         new_recipe = Recipe(
             recipe_name=request.form['recipe_name'],
             ingredients=ingredients_str,
             total_time = request.form['time'],
-            method = request.form['method'],
+            method = method_str,
             cuisine=cuisine,
             chef=current_user
         )

@@ -14,7 +14,11 @@
     </ul>
 
     <h3>Method</h3>
-    <p> {{recipe.method }} </p>
+    <ol>
+        {% for step in method_steps %}
+            <li>{{ step }}</li>
+        {% endfor %}
+    </ol>
 
 {% if current_user.is_authenticated %}
     <!-- [html-validate-disable attribute-allowed-values] -->
