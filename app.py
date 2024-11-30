@@ -66,7 +66,8 @@ def register_page():
 
 @app.route('/register', methods=['POST'])
 def register_action():
-    username = request.form['username']
+    username = request.form['username'].lower()
+
     if User.query.filter_by(username=username).first():
         flash(f"This username '{username}' is already taken, try another one")
         return redirect(url_for('register_page'))
@@ -98,7 +99,7 @@ def login_page():
 
 @app.route('/login', methods=['POST'])
 def login_action():
-    username = request.form['username']
+    username = request.form['username'].lower()
     user = User.query.filter_by(username=username).first()
     if not user:
         flash(f"This is not an existing username for this site")

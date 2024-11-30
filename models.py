@@ -15,6 +15,8 @@ class User(UserMixin, db.Model):
     recipes = db.relationship('Recipe', back_populates='chef')
     favorites = db.relationship('Favorite', back_populates='user')
 
+    
+
     def __repr__(self):
         return f'User <username: {self.username}, is_chef: {self.is_chef}>'
     
