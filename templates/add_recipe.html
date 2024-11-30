@@ -6,11 +6,16 @@
         <label>Recipe Name:
             <input type="text" name="recipe_name">
         </label>
-        <label>Ingredients:
-            <input type="text" name="ingredients">
-        </label>
+
+        <div id="ingredients-container">
+            <label>Ingredients:
+                <input type="text" name="ingredients[]">
+            </label>
+        </div>
+        <button type="button" id="add-ingredient-button">Add another ingredient</button>
+
         <label>Method:
-            <input type="text" name="method">
+            <textarea type="text" name="method" rows="5" cols="50" style="resize: vertical;"></textarea>
         </label>
         <label>Time (minutes):
             <input type="number" name="time">
@@ -24,4 +29,8 @@
         </label>
     <button type="submit">Add Recipe</button>
     </form>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 {% endblock %}

@@ -38,20 +38,32 @@ def recipe_list():
 @app.route('/recipe/<int:recipe_id>')
 def recipe(recipe_id):
     recipe = Recipe.query.get_or_404(recipe_id)
-    return render_template('recipe.html', recipe=recipe)
+
+    ingredients_list = [ingredient.strip() for ingredient in recipe.ingredients.split('/') if ingredient.strip()]
+    return render_template('recipe.html', recipe=recipe, ingredients=ingredients_list)
 
 @app.route('/add_recipe', methods=['GET', 'POST'])
 def add_recipe():
     if request.method == 'POST':
         cuisine = Cuisine.query.get_or_404(request.form['cuisine_id'])
-        db.session.add(Recipe(
+
+        # Get ingredients from the form
+        ingredients = request.form.getlist('ingredients[]')
+
+        # Join ingredients into a single string for database using '/'
+        ingredients_str = '/'.join(ingredient.strip() for ingredient in ingredients if ingredient.strip())
+
+        # Create new recipe instance
+        new_recipe = Recipe(
             recipe_name=request.form['recipe_name'],
-            ingredients=request.form['ingredients'],
+            ingredients=ingredients_str,
             total_time = request.form['time'],
             method = request.form['method'],
             cuisine=cuisine,
             chef=current_user
-        ))
+        )
+    
+        db.session.add(new_recipe)
         db.session.commit()
         return redirect(url_for('recipe_list'))
     
