@@ -28,6 +28,16 @@
             </nav>
         </header>
         <main>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class="flash-message">
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+
             {% block content %}{% endblock %}
         </main>
         {% block scripts %}{% endblock %}

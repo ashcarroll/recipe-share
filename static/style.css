@@ -98,6 +98,29 @@ main {
     max-width: 1200px;
 }
 
+/* Flash Styling */
+
+.flash-message {
+    background-color: #ccf7bf;
+    list-style-type: none;
+    padding: 0;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.flash-message li {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    list-style-type: none; /* Ensure no bullet points */
+}
+
+
 /* Table Styling */
 table {
     width: 100%;
