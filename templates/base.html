@@ -14,8 +14,10 @@
                     <li><a href="{{ url_for('index') }}">Home</a></li>
                     <li><a href="{{ url_for('recipe_list') }}">Recipes</a></li>
                     {% if current_user.is_authenticated %}
-                    <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
-                    <li><a href="{{ url_for('logout_page') }}">Log Out</a></li>
+                        {% if current_user.is_chef %}
+                            <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
+                        {% endif %}
+                        <li><a href="{{ url_for('logout_page') }}">Log Out</a></li>
                     {% else %}
                     <li><a href="{{ url_for('register_page') }}">Register</a></li>
                     <li><a href="{{ url_for('login_page') }}">Log In</a></li>
