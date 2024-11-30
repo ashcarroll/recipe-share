@@ -35,15 +35,22 @@ def recipe_list():
 @app.route('/add_recipe', methods=['GET', 'POST'])
 def add_recipe():
     if request.method == 'POST':
-        recipe_name = request.form['recipe_name']
-        ingredients = request.form['ingredients']
-        method = request.form['method']
-        time = request.form['time']
-        db.session.add(Recipe(recipe_name=recipe_name, ingredients=ingredients, method=method, total_time=time))
+        cuisine = Cuisine.query.get_or_404(request.form['cuisine_id'])
+        db.session.add(Recipe(
+            recipe_name=request.form['recipe_name'],
+            ingredients=request.form['ingredients'],
+            total_time = request.form['time'],
+            method = request.form['method'],
+            cuisine=cuisine,
+            chef=current_user
+        ))
         db.session.commit()
-        return redirect(recipe_list.html)
+        return redirect(url_for('recipe_list'))
     
-    return render_template('add_recipe.html')
+    else:
+        cuisines = Cuisine.query.all()
+        return render_template('add_recipe.html', cuisines=cuisines)
+    
 
 @app.route('/register', methods=['GET'])
 def register_page():
