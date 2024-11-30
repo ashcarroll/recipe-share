@@ -11,5 +11,14 @@
 
     <h3>Method</h3>
     <p> {{recipe.method }} </p>
-    
+
+{% if current_user.is_authenticated %}
+    <!-- [html-validate-disable attribute-allowed-values] -->
+    <form action="{{ url_for('favorite_recipe', recipe_id=recipe.recipe_id) }}" method="POST">
+        <button type="submit">Favorite recipe</button>
+    </form>
+{% else %}
+    <p><a href="{{ url_for('login_page') }}">Log in</a> to favorite this recipe</p>
+{% endif %}
+
 {% endblock %}

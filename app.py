@@ -105,5 +105,29 @@ def login_action():
     flash(f"Hello {username}!")
     return redirect(url_for('index'))
 
+@app.route('/favorites')
+@login_required
+def favorites():
+    favorites = current_user.favorites
+    recipes = [favorite.recipe for favorite in favorites]
+    return render_template('favorites.html', recipes=recipes)
+
+@app.route('/favorite/<int:recipe_id>', methods=['POST'])
+@login_required
+def favorite_recipe(recipe_id):
+    recipe = Recipe.query.get_or_404(recipe_id)
+
+    existing_favorite = Favorite.query.filter_by(user_id=current_user.user_id, recipe_id=recipe_id).first()
+    if existing_favorite:
+        flash(f"You have already favorited {recipe.recipe_name}")
+
+    else:
+        favorite = Favorite(user=current_user, recipe=recipe)
+        db.session.add(favorite)
+        db.session.commit()
+        flash(f"You have favorited {recipe.recipe_name}")
+    return redirect(url_for('recipe', recipe_id=recipe_id))
+
+
 if __name__ == '__main__':
     app.run(debug=True)
