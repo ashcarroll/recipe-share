@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
     <h2>{{ recipe.recipe_name }}</h2>
-    <p>Added by {{ recipe.chef.username }} on {{ recipe.date_added|date:"F j, Y, g:i a" }}</p>
+    <p>Added by {{ recipe.chef.username }} on {{ recipe.date_added }}</p>
 
     <h3>Time:</h3>
     <p> {{ recipe.total_time }} minutes</p>
