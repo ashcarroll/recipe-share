@@ -8,6 +8,7 @@ Only users registered as chefs contribute their recipes, ensuring a variety of h
 
 Users can save their favorite recipes to their unique favorites page to go back to anytime they want. 
 
+
 ## Features
 
 - <em>Home page</em> - Recipes categorised by cuisine
@@ -31,6 +32,17 @@ If you want some example user types, use the following profiles;
 <em>There is no passwords required for this site currently</em>
 
 
+## User Stories
+
+1. As a Chef, I want to add recipes that includes a title, ingredients, method, total time and cuisine
+2. As a user I want to browse recipes in a particular cuisine
+3. As a user I want to favourite and store my favourite recipes and view my personalised list
+4. As a new user I want to be able to register and chose my user type so I can access additional features
+5. As a user, I want to have a way to be displayed a random recipe
+
+
 ## Additional notes
 
 The database is also hosted on Render.com and is being managed using pgAdmin 4 locally, when needed.
+
+
