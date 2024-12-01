@@ -2,11 +2,16 @@ from datetime import datetime, timezone
 
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
+from config import Config
 
 from models import User, Recipe, Favorite, Cuisine, db
 
 app = Flask(__name__)
-app.config.from_object('config')
+# app.config.from_object('config')
+
+app.config['SQLALCHEMY_DATABASE_URI'] = Config.DATABASE_URL
+app.config['SECRET_KEY'] = Config.SECRET_KEY
+app.config['DEBUG'] = Config.DEBUG
 
 login_manager = LoginManager(app)
 login_manager.login_view = "login_page"
