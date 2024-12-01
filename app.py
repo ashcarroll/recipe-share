@@ -9,6 +9,7 @@ from models import User, Recipe, Favorite, Cuisine, db
 app = Flask(__name__)
 # app.config.from_object('config')
 
+
 app.config['SQLALCHEMY_DATABASE_URI'] = Config.DATABASE_URL
 app.config['SECRET_KEY'] = Config.SECRET_KEY
 app.config['DEBUG'] = Config.DEBUG
