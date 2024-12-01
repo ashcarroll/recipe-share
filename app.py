@@ -97,7 +97,7 @@ def register_action():
         flash(f"This username '{username}' is already taken, try another one")
         return redirect(url_for('register_page'))
     
-    is_chef = request.form.get('is_chef').lower() == 'on'
+    is_chef = request.form.get('is_chef', '').lower() == 'on'
     user = User(username=username, is_chef=is_chef)
 
     db.session.add(user)
