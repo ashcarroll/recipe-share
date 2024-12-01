@@ -12,7 +12,6 @@ app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = Config.DATABASE_URL
 app.config['SECRET_KEY'] = Config.SECRET_KEY
-app.config['DEBUG'] = Config.DEBUG
 
 login_manager = LoginManager(app)
 login_manager.login_view = "login_page"
